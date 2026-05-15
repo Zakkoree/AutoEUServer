@@ -30,8 +30,8 @@ AutoEUServer 旨在简化 EUserv 免费 IPv6 VPS 的繁琐续期过程，通过�
 |:-----------------------------|:------------------------------------------------------------------|:---|
 | `EUSERV_USERNAME`            | EUserv 登录邮箱                                                       | 是  |
 | `EUSERV_PASSWORD`            | EUserv 登录密码                                                       | 是  |
-| `GITHUB_TOKEN`               | [GitHub Token](https://github.com/settings/tokens)令牌（用于保活Actions） | 是  |
 | `MAILPARSER_DOWNLOAD_URL_ID` | [Parseur](https://app.parseur.com) 邮件解析服务的最新解析结果下载地址 (用于自动获取 PIN) | 是  |
+| `GITHUB_TOKEN`               | [GitHub Token](https://github.com/settings/tokens)令牌（用于保活Actions） | 否  |
 | `TG_BOT_TOKEN`               | Telegram Bot 的 Token                                              | 否  |
 | `TG_USER_ID`                 | Telegram 接收消息的 Chat ID                                            | 否  |
 | `YESCAPTCHA_KEY`             | [YesCaptcha](http://yescaptcha.com) API 密钥 (用于处理登录时偶尔会出现人机验证，选填)  | 否  |

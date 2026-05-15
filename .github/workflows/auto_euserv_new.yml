@@ -36,10 +36,20 @@ jobs:
         run: |
           echo "🚀 Starting EUserv Renewal..."
           python Github_Action_new.py 
-          echo "🚀 Actions Keep-Alive..."
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git pull --rebase
-          git commit --allow-empty -m "chore: auto keep-alive $(date '+%Y-%m-%d %H:%M:%S')"
-          git push
+
+      - name: Actions Keep-Alive
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # 判断 GITHUB_TOKEN 是否为空
+          if [ -z "$GITHUB_TOKEN" ]; then
+            echo "⚠️ GITHUB_TOKEN is empty! Skipping Git commit and push."
+          else
+            echo "🚀 Actions Keep-Alive..."
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+            git pull --rebase
+            git commit --allow-empty -m "chore: auto keep-alive $(date '+%Y-%m-%d %H:%M:%S')"
+            git push
+          fi
