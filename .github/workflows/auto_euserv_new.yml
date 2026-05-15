@@ -35,23 +35,11 @@ jobs:
           YESCAPTCHA_KEY: ${{ secrets.YESCAPTCHA_KEY }}
         run: |
           echo "🚀 Starting EUserv Renewal..."
-          
-          # 1. 配置 Git 用户
+          python Github_Action_new.py 
+          echo "🚀 Actions Keep-Alive..."
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          
-          # 2. 设置远程仓库地址 (使用 token 认证)
           git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          
-          # 3. 拉取最新代码 (防止冲突)
           git pull --rebase
-          
-          # 4. 执行保活
-          python Github_Action_new.py 
-          
-          # 5. 创建空提交 (保活工作流)
-          # 如果没有任何变化，--allow-empty 确保依然生成一个 commit
           git commit --allow-empty -m "chore: auto keep-alive $(date '+%Y-%m-%d %H:%M:%S')"
-          
-          # 6. 推送代码
           git push
