@@ -294,6 +294,9 @@ class EUservBot:
         :param page_action: 页面动作描述
         :return: 验证码识别结果
         """
+        if not Config.api_key:
+            print("⚠️ 出现人机验证， captcha 配置缺失。")
+            return ""
         print("🔍 开始处理验证码识别...")
         try:
                 
