@@ -72,7 +72,6 @@ def send_telegram_notification(status: str, details: str):
     if not Config.TG_BOT_TOKEN or not Config.TG_CHAT_ID:
         print("⚠️ Telegram 配置缺失，跳过推送。")
         return
-    if details == '无需续约 (所有合同正常)': return
     emoji = "✅" if status == "SUCCESS" else "❌"
     title = "EUserv 续约成功" if status == "SUCCESS" else "EUserv 续约失败"
 
