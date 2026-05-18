@@ -81,7 +81,7 @@ def send_telegram_notification(status: str, details: str):
         f"<b>👤 账号:</b> <code>{Config.EU_EMAIL}</code>\n"
         f"<b>🕒 时间:</b> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
         f"<b>📝 状态:</b> {details}\n\n"
-        f"<i>AutoEUServerless Bot</i>"
+        f"<i>EUServ Bot</i>"
     )
 
     data = {
